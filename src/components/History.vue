@@ -4,11 +4,11 @@
     <div class="flex">
       <p
       v-for="(number, i) in history" :key="i"
+      :class="activeIndexes(parseInt(value)).includes(i) && 'bold'"
       >
         {{number}}
       </p>
     </div>
-    {{activeIndexes(vaule)}}
     <input type="number"
     placeholder="Search by Index"
     v-model="value">
@@ -22,7 +22,7 @@ export default {
   name: 'History',
   data() {
     return {
-      vaule: 0
+      value: 0
     }
   },
   computed: {
@@ -32,7 +32,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .container{
   margin-top: 7rem;
 }
@@ -46,5 +46,8 @@ export default {
 }
 .flex p {
   margin: 1rem;
+}
+.bold{
+  font-weight: 900;
 }
 </style>
